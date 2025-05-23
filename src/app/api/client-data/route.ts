@@ -1,17 +1,10 @@
 import { NextResponse } from 'next/server';
-import testData from '../../../../test-data.json';
 
 export async function GET() {
 	try {
-		// In development, use test data
-		if (process.env.NODE_ENV === 'development') {
-			return NextResponse.json(testData);
-		}
-
-		// In production, use data from environment variable
-		const clientData = process.env.CLIENT_DATA;
+		const clientData = process.env.NEXT_PUBLIC_CLIENT_DATA;
 		if (!clientData) {
-			throw new Error('Client data not found');
+			throw new Error('Client data not found in environment variables');
 		}
 
 		return NextResponse.json(JSON.parse(clientData));
