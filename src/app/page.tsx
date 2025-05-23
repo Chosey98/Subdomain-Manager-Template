@@ -21,7 +21,6 @@ import {
 	FaLink,
 	FaGlobe,
 } from 'react-icons/fa';
-import testData from '../../test-data.json';
 
 interface Link {
 	title: string;
