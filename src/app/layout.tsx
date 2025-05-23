@@ -1,11 +1,9 @@
+import type { Metadata } from 'next';
 import './globals.css';
-import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata = {
-	title: 'Client Page',
-	description: 'Custom client page with links',
+export const metadata: Metadata = {
+	title: 'Dr. Nahla Moussa Center',
+	description: 'Connect with us on social media',
 };
 
 export default function RootLayout({
@@ -15,7 +13,13 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>{children}</body>
+			<head>
+				<link
+					rel="stylesheet"
+					href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+				/>
+			</head>
+			<body>{children}</body>
 		</html>
 	);
 }

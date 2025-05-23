@@ -1,19 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-inter: 'Inter', sans-serif;
+  --primary-bg: #eaf6fb;
+  --card-bg: #f5fbfd;
+  --border-color: #c9e5f0;
+  --text-dark: #2c2c2c;
+  --highlight: #2688a8;
 }
 
 body {
-  font-family: var(--font-inter);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  padding: 0;
+  font-family: 'Space Mono', monospace;
+  background: var(--primary-bg);
+  color: var(--text-dark);
 }
 
 /* Reset default link styles */
@@ -72,4 +75,74 @@ a:hover {
 
 .hover-scale:active {
   transform: scale(0.98);
+}
+
+@layer components {
+  .container {
+    @apply max-w-[420px] mx-auto my-10 bg-[var(--primary-bg)] rounded-[25px] shadow-lg p-[30px_20px] text-center;
+  }
+
+  .logo {
+    @apply flex justify-center items-center;
+  }
+
+  .logo img {
+    @apply w-[120px] h-auto object-contain bg-transparent mx-auto;
+  }
+
+  h1 {
+    @apply text-[22px] my-[20px_0_10px] text-[var(--text-dark)];
+  }
+
+  .icons {
+    @apply flex justify-center flex-wrap gap-[18px] text-[22px] my-5;
+  }
+
+  .icons a i {
+    @apply text-[var(--text-dark)] cursor-pointer transition-transform duration-300;
+  }
+
+  .icons a i:hover {
+    @apply text-[var(--text-dark)] scale-[1.2];
+  }
+
+  .social-card {
+    @apply bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[25px] p-[14px_20px] 
+    flex items-center justify-between my-3 shadow-sm transition-all duration-300 no-underline 
+    text-[var(--text-dark)] hover:bg-[#dff3f9] hover:translate-y-[-2px] hover:shadow-md;
+  }
+
+  .social-card i {
+    @apply text-2xl text-[var(--text-dark)];
+  }
+
+  .social-card span {
+    @apply flex-grow ml-4 text-left text-sm leading-relaxed;
+  }
+
+  .dots {
+    @apply text-gray-400;
+  }
+
+  .contact-info a {
+    @apply no-underline text-[var(--text-dark)];
+  }
+
+  .contact-info a:hover {
+    @apply text-[var(--highlight)];
+  }
+
+  .footer {
+    @apply mt-8 text-xs text-gray-600;
+  }
+}
+
+@media(max-width: 450px) {
+  .container {
+    @apply mx-[10px] my-5;
+  }
+  
+  .social-card span {
+    @apply text-[13px];
+  }
 } 

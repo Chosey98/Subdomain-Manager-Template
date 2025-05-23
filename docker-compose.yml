@@ -9,7 +9,7 @@ services:
             - '3000:3000'
         environment:
             - NODE_ENV=production
-            - CLIENT_DATA=${CLIENT_DATA}
+            - NEXT_PUBLIC_CLIENT_DATA=${NEXT_PUBLIC_CLIENT_DATA}
             - PORT=3000
             - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3000}
         healthcheck:
