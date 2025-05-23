@@ -85,12 +85,22 @@ const getIconComponent = (iconName: string) => {
 };
 
 export default function ClientPage() {
-	const [clientData, setClientData] = useState<ClientData | null>(null);
+	// Try to get initial data from env variable
+	const initialData = process.env.NEXT_PUBLIC_CLIENT_DATA
+		? JSON.parse(process.env.NEXT_PUBLIC_CLIENT_DATA)
+		: null;
+
+	const [clientData, setClientData] = useState<ClientData | null>(
+		initialData
+	);
 	const [error, setError] = useState<string>('');
 
 	useEffect(() => {
 		const fetchClientData = async () => {
 			try {
+				// Skip fetching if we already have data from env
+				if (clientData) return;
+
 				const response = await fetch('/api/client-data');
 				if (!response.ok) {
 					throw new Error('Failed to fetch client data');
@@ -104,7 +114,7 @@ export default function ClientPage() {
 		};
 
 		fetchClientData();
-	}, []);
+	}, [clientData]);
 
 	if (error) {
 		return (
