@@ -24,7 +24,7 @@ interface ClientData {
 }
 
 const defaultData: ClientData = {
-	name: 'Dr. Nahla Moussa Center',
+	name: 'Test Data',
 	logo: 'https://sandybrown-ant-159541.hostingersite.com/wp-content/uploads/2025/05/Dr.-Nahla-02.png',
 	links: [],
 };
