@@ -11,9 +11,9 @@ services:
             - NODE_ENV=production
             - NEXT_PUBLIC_CLIENT_DATA=${NEXT_PUBLIC_CLIENT_DATA}
             - PORT=${PORT}
-            - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3000}
+            - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://0.0.0.0:${PORT}}
         healthcheck:
-            test: ['CMD', 'wget', '--spider', 'http://localhost:${PORT}']
+            test: ['CMD', 'wget', '--spider', 'http://0.0.0.0:${PORT}']
             interval: 10s
             timeout: 5s
             retries: 3
