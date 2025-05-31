@@ -12,9 +12,9 @@ services:
             - NEXT_PUBLIC_CLIENT_DATA=${NEXT_PUBLIC_CLIENT_DATA}
             - PORT=${PORT}
             - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://0.0.0.0:${PORT}}
-        healthcheck:
-            test: ['CMD', 'wget', '--spider', 'http://0.0.0.0:${PORT}']
-            interval: 10s
-            timeout: 5s
-            retries: 3
+        # healthcheck:
+        #     test: ['CMD', 'wget', '--spider', 'http://0.0.0.0:${PORT}']
+        #     interval: 10s
+        #     timeout: 5s
+        #     retries: 3
         restart: unless-stopped
