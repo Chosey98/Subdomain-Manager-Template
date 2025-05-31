@@ -6,14 +6,14 @@ services:
             context: .
             dockerfile: Dockerfile
         ports:
-            - '3000:3000'
+            - '${PORT:-3000}:3000'
         environment:
             - NODE_ENV=production
             - NEXT_PUBLIC_CLIENT_DATA=${NEXT_PUBLIC_CLIENT_DATA}
-            - PORT=3000
+            - PORT=${PORT}
             - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3000}
         healthcheck:
-            test: ['CMD', 'wget', '--spider', 'http://localhost:3000']
+            test: ['CMD', 'wget', '--spider', 'http://localhost:${PORT}']
             interval: 10s
             timeout: 5s
             retries: 3
