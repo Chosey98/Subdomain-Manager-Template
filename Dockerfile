@@ -36,20 +36,7 @@ RUN npm ci --only=production
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-# ENV HOSTNAME=0.0.0.0
-
-# # Create a non-root user
-# RUN addgroup --system --gid 1001 nodejs
-# RUN adduser --system --uid 1001 nextjs
-# RUN chown -R nextjs:nodejs /app
-
-# USER nextjs
-
-# # Add healthcheck
-# HEALTHCHECK --interval=10s --timeout=3s --start-period=30s --retries=3 \
-# 	CMD curl -f http://localhost:3000/api/health || exit 1
-
-# Expose port
+# Expose default port (will be overridden by environment)
 EXPOSE 3000
 
 # Start the application
