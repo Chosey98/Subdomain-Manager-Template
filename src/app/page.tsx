@@ -69,17 +69,26 @@ const isContactIcon = (iconName: string): boolean => {
 };
 
 export default function Page() {
-	// Check if custom HTML is provided
-	const customHTML = process.env.NEXT_PUBLIC_CUSTOM_HTML;
+	// Check if custom HTML is provided (Base64 encoded)
+	const customHTMLBase64 = process.env.NEXT_PUBLIC_CUSTOM_HTML_BASE64;
 
-	// If custom HTML is provided, render it directly
-	if (customHTML) {
-		return (
-			<div
-				dangerouslySetInnerHTML={{ __html: customHTML }}
-				style={{ width: '100%', height: '100vh' }}
-			/>
-		);
+	// If custom HTML is provided, decode and render it directly
+	if (customHTMLBase64) {
+		try {
+			// Decode the Base64 HTML
+			const customHTML = Buffer.from(customHTMLBase64, 'base64').toString(
+				'utf8'
+			);
+			return (
+				<div
+					dangerouslySetInnerHTML={{ __html: customHTML }}
+					style={{ width: '100%', height: '100vh' }}
+				/>
+			);
+		} catch (error) {
+			console.error('Error decoding custom HTML:', error);
+			// Fall back to template mode if decoding fails
+		}
 	}
 
 	// Parse the client data from environment variable for template mode
