@@ -55,15 +55,7 @@ export default function Page() {
 			{/* ICON LINKS ROW */}
 			<div className="icons">
 				{clientData.links
-					.filter((link) =>
-						[
-							'instagram',
-							'tiktok',
-							'pinterest',
-							'facebook',
-							'x-twitter',
-						].includes(link.icon)
-					)
+					.filter((link) => ['phone', 'envelope'].includes(link.icon))
 					.map((link, index) => (
 						<a
 							key={index}
@@ -71,7 +63,7 @@ export default function Page() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<i className={`fab fa-${link.icon}`}></i>
+							<i className={`fas fa-${link.icon}`}></i>
 						</a>
 					))}
 			</div>
