@@ -69,7 +69,20 @@ const isContactIcon = (iconName: string): boolean => {
 };
 
 export default function Page() {
-	// Parse the client data from environment variable
+	// Check if custom HTML is provided
+	const customHTML = process.env.NEXT_PUBLIC_CUSTOM_HTML;
+
+	// If custom HTML is provided, render it directly
+	if (customHTML) {
+		return (
+			<div
+				dangerouslySetInnerHTML={{ __html: customHTML }}
+				style={{ width: '100%', height: '100vh' }}
+			/>
+		);
+	}
+
+	// Parse the client data from environment variable for template mode
 	const clientData: ClientData = (() => {
 		try {
 			const envData = process.env.NEXT_PUBLIC_CLIENT_DATA;
